@@ -18,6 +18,9 @@ class Fraction:
         self.num = num
         self.denom = denom
 
+    def to_float(self):
+        return self.num / self.denom
+
     def reciprocal(self):
         if self.num == 0:
             raise ZeroDivisionError("Numerator is 0, reciprocal does not exist")
@@ -107,3 +110,7 @@ class Fraction:
 
 if __name__ == "__main__":
     # testing
+    fractions = [Fraction.from_continued_fraction(list(range(i + 1))).to_float() for i in range(11)]
+    print(fractions)
+    plt.plot(fractions, 'bo')
+    plt.show()
